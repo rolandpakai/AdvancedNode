@@ -3,9 +3,17 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import formFields from './formFields';
-import { withRouter } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import * as actions from '../../actions';
 
+
+const withRouter = (Component) =>{
+  const Wrapper = (props) =>{
+      const history = useNavigate();
+      return <Component history={history} {...props}/>
+  } 
+  return Wrapper;
+}
 class BlogFormReview extends Component {
   renderFields() {
     const { formValues } = this.props;
