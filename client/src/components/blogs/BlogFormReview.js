@@ -6,7 +6,6 @@ import formFields from './formFields';
 import { useNavigate } from 'react-router';
 import * as actions from '../../actions';
 
-
 const withRouter = (Component) =>{
   const Wrapper = (props) =>{
       const history = useNavigate();
