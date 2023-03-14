@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
+import { useParams  } from 'react-router';
 import { connect } from 'react-redux';
 import { fetchBlog } from '../../actions';
 
+
+function withParams(Component) {
+  return props => <Component {...props} params={useParams()} />;
+}
 class BlogShow extends Component {
-  componentDidMount() {
-    this.props.fetchBlog(this.props.match.params._id);
+  constructor(props) {
+    super(props);
+
+    this.blog = this.props.blogs[this.props.params._id];
   }
 
   render() {
-    if (!this.props.blog) {
+    if (!this.blog) {
       return '';
     }
 
-    const { title, content } = this.props.blog;
+    const { title, content } = this.blog;
 
     return (
       <div>
@@ -23,8 +30,8 @@ class BlogShow extends Component {
   }
 }
 
-function mapStateToProps({ blogs }, ownProps) {
-  return { blog: blogs[ownProps.match.params._id] };
+function mapStateToProps(state) {
+  return { blogs: state.blogs }
 }
 
-export default connect(mapStateToProps, { fetchBlog })(BlogShow);
+export default connect(mapStateToProps)(withParams(BlogShow));
