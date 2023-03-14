@@ -7,7 +7,7 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import BlogNew from './blogs/BlogNew';
-import BlogShow from './blogs/BlogShow';
+import BlogWrapper from './blogs/BlogWrapper';
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class App extends Component {
             <Header />
             <Routes>
               <Route path="/blogs/new" element={<BlogNew />} />
-              <Route exact path="/blogs/:_id" element={<BlogShow />} />
+              <Route exact path="/blogs/:_id" element={<BlogWrapper />} />
               <Route path="/blogs" element={<Dashboard />} />
               <Route path="/" element={<Landing />} />
             </Routes>
