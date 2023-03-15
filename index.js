@@ -9,6 +9,7 @@ const { mongoConnect } = require('./services/mongo')
 require('./models/User');
 require('./models/Blog');
 require('./services/passport');
+require('./services/cache');
 
 mongoConnect();
 
