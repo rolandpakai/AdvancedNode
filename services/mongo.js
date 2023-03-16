@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
 mongoose.connection.on('open', () => {
-  console.log('MongoDB connection ready!');
+  // console.log('MongoDB connection ready!');
 });
 
 mongoose.connection.on('error', (error) => {
